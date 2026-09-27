@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% from "partials/macros.html" import card %}
+{% set page_class = "notfound" %}
+{% set title = "Page not found" %}
+{% block head %}<meta name="robots" content="noindex">{% endblock %}
+{% block main %}
+<section class="page-head center">
+  <div class="wrap">
+    <p class="eyebrow c-pink">404</p>
+    <h1>Critical miss.</h1>
+    <p class="lede">That page wandered off. The site was rebuilt recently, so an old link may have moved.</p>
+    <div class="actions center">
+      <a class="btn btn-primary" href="{{ url('gallery/') }}">Go to the gallery</a>
+      <a class="btn btn-ghost" href="{{ url() }}">Home</a>
+    </div>
+  </div>
+</section>
+<section class="section section-tight">
+  <div class="wrap grid-4">{% for p in site.featured_pieces[:4] %}{{ card(p, sizes="(min-width: 1100px) 270px, 45vw") }}{% endfor %}</div>
+</section>
+{% endblock %}

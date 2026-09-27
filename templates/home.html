@@ -1,0 +1,132 @@
+{% extends "base.html" %}
+{% from "partials/macros.html" import card, heroforge_pair %}
+{% set page_class = "home" %}
+{% block head %}<link rel="preload" as="image" href="{{ img_src('hawkgirl', 960) }}">{% endblock %}
+{% block main %}
+<section class="hero">
+  <div class="wrap hero-inner">
+    <div class="hero-copy">
+      <p class="eyebrow c-mint">3D printed &middot; hand painted &middot; Seattle</p>
+      <h1><span class="grad">Painted</span> minis, statues &amp; props.</h1>
+      <p class="lede">Hi, I'm Casey. I print and paint the characters from our D&amp;D table and the comic book heroes I always wanted on my shelf. This is where I show them off.</p>
+      <div class="actions">
+        <a class="btn btn-primary" href="{{ url('gallery/') }}">Explore the gallery</a>
+        <a class="btn btn-ghost" href="{{ site.youtube }}" target="_blank" rel="noopener"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>Watch on YouTube</a>
+      </div>
+      <dl class="hero-stats">
+        <div><dt>{{ pieces|length }}</dt><dd>pieces in the gallery</dd></div>
+        <div><dt>{{ site.categories|length }}</dt><dd>categories</dd></div>
+        <div><dt>1</dt><dd>very full paint rack</dd></div>
+      </dl>
+    </div>
+    <div class="hero-panels" aria-label="Featured work">
+      {% set heroes = [("hawkgirl","Hawkgirl statue","p-a"),("batman","Batman statue","p-b"),("deadpool","Deadpool statue","p-d")] %}
+      {% for stem, alt, pos in heroes %}
+      <a class="panel {{ pos }}" href="{{ url('work/' ~ stem ~ '/') }}">{{ img(stem, alt, sizes="(min-width: 960px) 26vw, 46vw", eager=loop.first) }}</a>
+      {% endfor %}
+      <span class="burst" aria-hidden="true">POW!</span>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap">
+    <div class="section-head">
+      <div>
+        <p class="eyebrow c-pink">Fresh off the bench</p>
+        <h2>Featured work</h2>
+      </div>
+      <a class="link-arrow" href="{{ url('gallery/') }}">See everything</a>
+    </div>
+    <div class="bento">
+      {% for p in site.featured_pieces %}
+      {{ card(p, sizes=("(min-width: 1100px) 560px, 92vw" if loop.first else "(min-width: 1100px) 270px, (min-width: 640px) 45vw, 92vw"), cls=("bento-lg" if loop.first else "")) }}
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<section class="section section-alt">
+  <div class="wrap">
+    <div class="section-head">
+      <div>
+        <p class="eyebrow c-cyan">Browse by shelf</p>
+        <h2>Three kinds of fun</h2>
+      </div>
+    </div>
+    <div class="cats">
+      {% for c in site.categories %}
+      <a class="cat c-{{ c.color }}" href="{{ url(c.path) }}">
+        <span class="cat-media">{{ img(c.cover, "", sizes="(min-width: 900px) 380px, 92vw") }}</span>
+        <span class="cat-body">
+          <span class="cat-name">{{ c.name }}</span>
+          <span class="cat-blurb">{{ c.blurb }}</span>
+          <span class="cat-count">{{ c.pieces|length }} pieces &rarr;</span>
+        </span>
+      </a>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap">
+    <div class="section-head">
+      <div>
+        <p class="eyebrow c-mint">From screen to table</p>
+        <h2>HeroForge, printed and painted</h2>
+        <p class="section-sub">Characters get designed in <a href="{{ site.heroforge }}" target="_blank" rel="noopener">HeroForge</a>, then I print them and paint them to match.</p>
+      </div>
+    </div>
+    <div class="pairs" tabindex="0" aria-label="HeroForge before and after, scrollable">
+      {% for p in site.heroforge_pieces %}{{ heroforge_pair(p) }}{% endfor %}
+    </div>
+  </div>
+</section>
+
+<section class="section section-alt">
+  <div class="wrap bench">
+    <div class="bench-media">
+      <video autoplay muted loop playsinline preload="none" poster="{{ url('video/resin-printing-poster.jpg') }}" aria-label="Time-lapse of a resin 3D print rising out of the vat">
+        <source src="{{ url('video/resin-printing.mp4') }}" type="video/mp4">
+      </video>
+    </div>
+    <div class="bench-copy">
+      <p class="eyebrow c-pink">How it's made</p>
+      <h2>From file to finished piece</h2>
+      <ol class="mini-steps">
+        <li><b>Print.</b> Resin for fine detail, FDM for big, tough pieces. Supports placed by hand so they vanish later.</li>
+        <li><b>Prep &amp; prime.</b> Wash, cure, clean up, then an airbrushed zenithal prime that maps out the light.</li>
+        <li><b>Paint.</b> Base colors, washes, layers and highlights, then the fun stuff: glow, blood, rust and basing.</li>
+      </ol>
+      <a class="btn btn-ghost" href="{{ url('process/') }}">See the whole process</a>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap about-teaser">
+    {{ img("casey", "Casey Iiams-Hauser", sizes="120px", cls="avatar") }}
+    <div>
+      <p class="eyebrow c-cyan">Behind the brush</p>
+      <h2>Pewter window shopping to printing my own adventures</h2>
+      <p>I spent the late '80s staring at pewter minis in game shop windows. A few years ago I got my first printer, started painting while keeping my son company during homework, and never stopped.</p>
+      <a class="link-arrow" href="{{ url('about/') }}">Read the story</a>
+    </div>
+  </div>
+</section>
+
+<section class="cta-band">
+  <div class="wrap cta-inner">
+    <div>
+      <h2>Follow along</h2>
+      <p>Painting tutorials, time-lapses and behind-the-scenes looks.</p>
+    </div>
+    <div class="actions">
+      <a class="btn btn-yt" href="{{ site.youtube }}" target="_blank" rel="noopener"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>YouTube</a>
+      <a class="btn btn-ghost" href="{{ site.instagram }}" target="_blank" rel="noopener">Instagram</a>
+      <a class="btn btn-ghost" href="{{ url('commissions/') }}">Commission a piece</a>
+    </div>
+  </div>
+</section>
+{% endblock %}

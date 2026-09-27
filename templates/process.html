@@ -1,0 +1,92 @@
+{% extends "base.html" %}
+{% from "partials/macros.html" import page_head %}
+{% set page_class = "process" %}
+{% set title = "The Process" %}
+{% set description = "How a Case In Paint piece gets made: file prep, supports, resin and FDM printing, cleanup, zenithal priming, painting, effects and final assembly." %}
+{% set steps = [
+  {"n": "01", "tag": "Prep", "title": "File preparation",
+   "body": ["It starts with a digital file: a HeroForge character, an STL from a favorite sculptor, or a model someone points me to. It goes into the slicer, where I check scale, orientation and printability.",
+            "Some models get hollowed to save resin, others split into parts for cleaner prints and easier painting. This is also where I decide between resin (high detail) and FDM (big props)."],
+   "imgs": []},
+  {"n": "02", "tag": "Support", "title": "Adding supports",
+   "body": ["Resin printing builds a model layer by layer out of a vat of liquid resin, so overhangs and islands need supports. It is half science, half art.",
+            "Supports hold up the delicate bits (outstretched arms, weapons, capes) while keeping contact points off visible surfaces. Bad supports leave marks or fail the print. Good supports are invisible in the finished piece."],
+   "imgs": [("process-supports", "A batch of models with supports in the slicer")]},
+  {"n": "03", "tag": "Print", "title": "3D printing",
+   "body": ["Two kinds of printers, depending on the job. Resin (MSLA) gets down to 0.05 mm layers and handles almost every mini, bust and statue. FDM (filament) is stronger and bigger, which suits cosplay props, helmets, terrain and anything that gets handled a lot.",
+            "A small mini might take 2 to 3 hours. A full helmet can take 40+ hours across several prints."],
+   "video": True,
+   "imgs": [("process-clear-resin", "Freshly printed clear resin models"), ("process-printed-parts", "Printed parts laid out on the bench")]},
+  {"n": "04", "tag": "Clean", "title": "Cleaning and support removal",
+   "body": ["Resin prints come off the plate covered in uncured resin. They get washed in isopropyl alcohol, the supports come off with flush cutters and a hobby knife, then a UV cure hardens everything and any nubs get sanded smooth.",
+            "FDM prints get their own cleanup: support removal, sanding layer lines and sometimes filler for a smooth finish. For print-only orders, this is where a piece gets packed up."],
+   "imgs": [("process-raw-print", "A cleaned, unpainted resin print in hand")]},
+  {"n": "05", "tag": "Prime", "title": "Priming",
+   "body": ["Primer gives paint something to grip and creates an even surface. I airbrush it for smooth coverage that keeps the detail crisp. Grey is my go-to, black for darker pieces, white when I want colors to really pop."],
+   "imgs": [("process-batch", "A batch of minis after priming and basing")]},
+  {"n": "06", "tag": "Zenithal", "title": "Zenithal priming",
+   "body": ["One of my favorite tricks. Over a dark base coat, I spray white or light grey from above, like sunlight. The raised surfaces catch it and the recesses stay dark, so the model carries a built-in highlight map before any color goes on.",
+            "Thin or contrast paints over a zenithal prime let that light and shadow show through, which gives instant depth."],
+   "imgs": []},
+  {"n": "07", "tag": "Paint", "title": "Painting",
+   "body": ["Base colors block in the scheme, matching reference art or a HeroForge design. Washes and shading flow into the recesses. Layers and highlights build up the raised edges. Then details: eyes, gems, fine lines and textures.",
+            "Depending on the piece that means wet blending, drybrushing, glazing and stippling. Multiple thin coats always beat one thick one."],
+   "imgs": [("process-basecoat", "Minis partway through painting"), ("process-wolverine-wip", "Statue parts mid-paint on the bench")]},
+  {"n": "08", "tag": "Effects", "title": "Finishing and special effects",
+   "body": ["This is where good turns into great: matte varnish for natural surfaces, gloss for gems and wet looks, satin for leather and cloth. Then blood and gore, rust and weathering, object source lighting, freehand patterns, non-metallic metal and glow effects.",
+            "Basing happens here too, with texture paste, rocks, tufts, water effects or themed pieces that tell a character's story."],
+   "imgs": [("process-terrain-wip", "A terrain piece with snow and rock effects in progress")]},
+  {"n": "09", "tag": "Finish", "title": "Assembly and delivery",
+   "body": ["Multi-part pieces get painted separately and assembled at the end. It is much easier to paint a helmet apart from a body. Seams get touched up and a final varnish seals it all in for years of handling or display.",
+            "Then it is photo time, and the piece is packed in foam for the trip. Local pickup works too if you are around Seattle."],
+   "imgs": [("paint-station", "Casey's painting station")]}
+] %}
+{% block main %}
+{{ page_head("How it's made", "The process", "From digital file to finished piece. Whether it's a raw print or a fully painted display piece, every stage gets the same care.", "mint") }}
+<section class="section section-tight">
+  <div class="wrap">
+    <nav class="step-index" aria-label="Steps">
+      {% for s in steps %}<a href="#step-{{ s.n }}"><b>{{ s.n }}</b>{{ s.tag }}</a>{% endfor %}
+    </nav>
+    <ol class="steps">
+      {% for s in steps %}
+      <li class="step" id="step-{{ s.n }}">
+        <div class="step-num" aria-hidden="true">{{ s.n }}</div>
+        <div class="step-copy">
+          <p class="eyebrow c-{{ ['pink','cyan','mint'][loop.index0 % 3] }}">{{ s.tag }}</p>
+          <h2>{{ s.title }}</h2>
+          {% for para in s.body %}<p>{{ para }}</p>{% endfor %}
+        </div>
+        {% if s.video or s.imgs %}
+        <div class="step-media{% if (s.imgs|length + (1 if s.video else 0)) > 1 %} two{% endif %}">
+          {% if s.video %}
+          <figure>
+            <video controls muted loop playsinline preload="none" poster="{{ url('video/resin-printing-poster.jpg') }}">
+              <source src="{{ url('video/resin-printing.mp4') }}" type="video/mp4">
+            </video>
+            <figcaption>A resin print coming to life</figcaption>
+          </figure>
+          {% endif %}
+          {% for stem, alt in s.imgs %}
+          <figure>{{ img(stem, alt, sizes="(min-width: 1000px) 420px, 92vw") }}<figcaption>{{ alt }}</figcaption></figure>
+          {% endfor %}
+        </div>
+        {% endif %}
+      </li>
+      {% endfor %}
+    </ol>
+  </div>
+</section>
+<section class="cta-band">
+  <div class="wrap cta-inner">
+    <div>
+      <h2>See where it ends up</h2>
+      <p>Every piece in the gallery went through these nine steps.</p>
+    </div>
+    <div class="actions">
+      <a class="btn btn-primary" href="{{ url('gallery/') }}">Browse the gallery</a>
+      <a class="btn btn-ghost" href="{{ url('commissions/') }}">Start a project</a>
+    </div>
+  </div>
+</section>
+{% endblock %}

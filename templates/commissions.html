@@ -1,0 +1,151 @@
+{% extends "base.html" %}
+{% from "partials/macros.html" import page_head, heroforge_pair %}
+{% set page_class = "commissions" %}
+{% set title = "Commissions" %}
+{% set description = "Custom 3D printing and painting from Case In Paint: print-only or printed and painted minis, statues, busts and props. HeroForge files welcome." %}
+{% block main %}
+{{ page_head("Commissions", "Got a file? I'll make it real.", "Mostly I paint for fun, but I'm happy to print and paint something for you: minis, statues, busts, terrain or whatever else you throw at me.", "pink") }}
+
+<section class="section section-tight">
+  <div class="wrap">
+    <div class="offers">
+      <div class="offer c-cyan">
+        <h2>Print only</h2>
+        <p>You bring the file, I bring it to life. Great if you want to paint it yourself.</p>
+        <ul class="ticks">
+          <li>Resin printing for fine detail</li>
+          <li>FDM printing for larger pieces</li>
+          <li>I'll recommend the best option</li>
+          <li>Base with a velvet bottom</li>
+        </ul>
+      </div>
+      <div class="offer c-pink">
+        <h2>Print &amp; paint</h2>
+        <p>The full treatment, printed and painted to the level you need.</p>
+        <ul class="levels">
+          <li><b>Primed only</b><span>Ready for you to paint</span></li>
+          <li><b>Tabletop ready</b><span>Looks great at arm's length, built for game night</span></li>
+          <li><b>Display quality</b><span>Shelf-worthy, every detail picked out</span></li>
+        </ul>
+        <ul class="ticks"><li>Base with a velvet bottom</li></ul>
+      </div>
+    </div>
+
+    <div class="factors">
+      <h2>What shapes the quote</h2>
+      <p class="section-sub">Every project is different, so I quote each one. These are the big levers.</p>
+      <ul>
+        <li><b>Size</b><span>A 28 mm mini vs a 12" statue</span></li>
+        <li><b>Print type</b><span>Resin vs FDM</span></li>
+        <li><b>Paint level</b><span>Primed through display</span></li>
+        <li><b>Complexity</b><span>Single figure through full diorama</span></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="section section-alt">
+  <div class="wrap hf-block">
+    <div>
+      <p class="eyebrow c-mint">Bring your character to life</p>
+      <h2>Design it in HeroForge</h2>
+      <p>Build your D&amp;D character in <a href="{{ site.heroforge }}" target="_blank" rel="noopener">HeroForge</a>, then send me the file or a link to your design. I'll print it and paint it to match.</p>
+      <a class="btn btn-ghost" href="{{ site.heroforge }}" target="_blank" rel="noopener">Open HeroForge</a>
+    </div>
+    <div class="pairs pairs-static">
+      {% for p in site.heroforge_pieces[:2] %}{{ heroforge_pair(p) }}{% endfor %}
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap">
+    <div class="section-head">
+      <div>
+        <p class="eyebrow c-cyan">No file? No problem</p>
+        <h2>Studios I like printing from</h2>
+        <p class="section-sub">I can print from these stores, or bring your own STL from MyMiniFactory, Cults3D, Patreon or wherever. Just make sure you have the rights to print it.</p>
+      </div>
+    </div>
+    <ul class="studios">
+      {% for s in site.studios %}
+      <li><a href="{{ s.url }}" target="_blank" rel="noopener"><b>{{ s.name }}</b><span>{{ s.what }}</span></a></li>
+      {% endfor %}
+    </ul>
+  </div>
+</section>
+
+<section class="section section-alt">
+  <div class="wrap faq-form">
+    <div class="faq">
+      <h2>Quick answers</h2>
+      <details open>
+        <summary>How long does it take?</summary>
+        <p>Smaller pieces take a few days. Large projects take up to a week. You'll get a timeline with your quote.</p>
+      </details>
+      <details>
+        <summary>What about shipping?</summary>
+        <p>Shipping costs depend on where you are. Everything is packed carefully in foam to survive the trip.</p>
+      </details>
+      <details>
+        <summary>Can I pick it up?</summary>
+        <p>Yes. If you're in the Seattle area, local pickup is available and saves on shipping. Just mention it when you get in touch.</p>
+      </details>
+      <details>
+        <summary>How does payment work?</summary>
+        <p>50% deposit to start, 50% before shipping or pickup. PayPal and Venmo both work.</p>
+      </details>
+      <details>
+        <summary>What's included?</summary>
+        <p>Every model comes on a base with a velvet bottom. Painted pieces get a protective varnish, and I'll send photos of the finished piece before it ships.</p>
+      </details>
+      <details>
+        <summary>Can I send my own file?</summary>
+        <p>Absolutely: HeroForge files, files from licensed STL stores, or your own designs.</p>
+      </details>
+    </div>
+
+    <form class="inquiry" action="{{ url('contact.php') }}" method="post" data-inquiry>
+      <h2 id="form-title">Let's talk</h2>
+      <p>Tell me about your project and I'll get back to you with a quote.</p>
+      <p class="form-error" role="alert" data-form-error hidden>Something went wrong sending that. Please try again or email <a href="mailto:{{ site.email }}">{{ site.email }}</a>.</p>
+      <div class="field">
+        <label for="f-name">Name</label>
+        <input id="f-name" name="name" type="text" autocomplete="name" required maxlength="120">
+      </div>
+      <div class="field">
+        <label for="f-email">Email</label>
+        <input id="f-email" name="email" type="email" autocomplete="email" required maxlength="200">
+      </div>
+      <div class="field">
+        <label for="f-type">What kind of project?</label>
+        <select id="f-type" name="type">
+          <option>Tabletop mini</option>
+          <option>Statue or bust</option>
+          <option>Prop or display piece</option>
+          <option>Print only</option>
+          <option>Something else</option>
+        </select>
+      </div>
+      <div class="field">
+        <label for="f-msg">Tell me about it</label>
+        <textarea id="f-msg" name="message" rows="5" required maxlength="5000" placeholder="What would you like me to create? Links to files or reference images are great."></textarea>
+      </div>
+      <div class="field">
+        <label for="f-deadline">Any deadline? <span>(optional)</span></label>
+        <input id="f-deadline" name="deadline" type="text" maxlength="200" placeholder="e.g. a birthday in three weeks">
+      </div>
+      <div class="field hp" aria-hidden="true">
+        <label for="f-website">Leave this empty</label>
+        <input id="f-website" name="website" type="text" tabindex="-1" autocomplete="off">
+      </div>
+      <input type="hidden" name="t" value="" data-ts>
+      <div class="form-actions">
+        <button class="btn btn-primary" type="submit">Send it</button>
+        <a class="btn btn-ghost" href="{{ site.dropbox_request }}" target="_blank" rel="noopener">Upload a file to Dropbox</a>
+      </div>
+      <p class="form-note">Prefer email? <a href="mailto:{{ site.email }}">{{ site.email }}</a></p>
+    </form>
+  </div>
+</section>
+{% endblock %}

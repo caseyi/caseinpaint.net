@@ -1,0 +1,78 @@
+{% extends "base.html" %}
+{% from "partials/macros.html" import card %}
+{% set page_class = "piece" %}
+{% set title = piece.title %}
+{% set description = piece.summary %}
+{% set og_type = "article" %}
+{% block head %}
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"VisualArtwork","name":{{ piece.title|tojson }},"description":{{ piece.summary|tojson }},"artform":"Painted 3D print","genre":{{ piece.cat.name|tojson }},"image":[{% for s in piece.images %}"{{ abs_url(img_large(s)[base|length:]) }}"{% if not loop.last %},{% endif %}{% endfor %}],"creator":{"@id":"{{ site.url }}/#casey"},"url":"{{ abs_url(path) }}"}
+</script>
+{% endblock %}
+{% block main %}
+<div class="wrap">
+  <nav class="crumbs" aria-label="Breadcrumb">
+    <a href="{{ url('gallery/') }}">Gallery</a><span aria-hidden="true">/</span>
+    <a href="{{ url(piece.cat.path) }}">{{ piece.cat.name }}</a><span aria-hidden="true">/</span>
+    <span aria-current="page">{{ piece.title }}</span>
+  </nav>
+</div>
+<article class="wrap piece-layout">
+  <div class="viewer" data-viewer>
+    <a class="viewer-main" href="{{ img_large(piece.cover) }}" data-open="0" aria-label="View {{ piece.title }} larger">
+      {{ img(piece.cover, piece.title, sizes="(min-width: 1000px) 640px, 92vw", eager=True, data_main="") }}
+      <span class="zoom-hint" aria-hidden="true">Tap to zoom</span>
+    </a>
+    {% if piece.images|length > 1 %}
+    <ul class="thumbs" role="list">
+      {% for s in piece.images %}
+      <li><button type="button" class="thumb" data-index="{{ loop.index0 }}" data-src="{{ img_src(s, 960) }}" data-full="{{ img_large(s) }}"{% if loop.first %} aria-current="true"{% endif %} aria-label="Photo {{ loop.index }} of {{ piece.images|length }}">{{ img(s, "", sizes="96px") }}</button></li>
+      {% endfor %}
+    </ul>
+    {% endif %}
+  </div>
+  <div class="piece-info">
+    <a class="card-cat c-{{ piece.cat.color }}" href="{{ url(piece.cat.path) }}">{{ piece.cat.name }}</a>
+    <h1>{{ piece.title }}</h1>
+    <p class="lede">{{ piece.summary }}</p>
+    {% if piece.heroforge %}
+    <figure class="hf-inset">
+      {{ img(piece.heroforge, piece.title ~ " as designed in HeroForge", sizes="140px") }}
+      <figcaption><b>Started in HeroForge.</b> The design on the left became the painted mini you see here. <a href="{{ site.heroforge }}" target="_blank" rel="noopener">Make your own &rarr;</a></figcaption>
+    </figure>
+    {% endif %}
+    <dl class="facts">
+      <div><dt>Shelf</dt><dd>{{ piece.cat.name }}</dd></div>
+      <div><dt>Photos</dt><dd>{{ piece.images|length }}</dd></div>
+    </dl>
+    <p class="piece-cta">Want one like it? <a href="{{ url('commissions/') }}">Ask about a commission</a>.</p>
+    <nav class="pager" aria-label="More pieces">
+      <a href="{{ url(prev.path) }}" rel="prev"><span>&larr; Previous</span>{{ prev.title }}</a>
+      <a href="{{ url(next.path) }}" rel="next"><span>Next &rarr;</span>{{ next.title }}</a>
+    </nav>
+  </div>
+</article>
+{% if related %}
+<section class="section">
+  <div class="wrap">
+    <div class="section-head">
+      <h2>More {{ piece.cat.name|lower }}</h2>
+      <a class="link-arrow" href="{{ url(piece.cat.path) }}">See all</a>
+    </div>
+    <div class="grid-4">{% for p in related %}{{ card(p, sizes="(min-width: 1100px) 270px, (min-width: 640px) 45vw, 92vw") }}{% endfor %}</div>
+  </div>
+</section>
+{% endif %}
+{% endblock %}
+{% block dialogs %}
+<dialog class="lightbox" data-lightbox aria-label="{{ piece.title }} photos">
+  <button type="button" class="lb-close" data-close aria-label="Close">&times;</button>
+  {% if piece.images|length > 1 %}
+  <button type="button" class="lb-nav lb-prev" data-step="-1" aria-label="Previous photo">&lsaquo;</button>
+  <button type="button" class="lb-nav lb-next" data-step="1" aria-label="Next photo">&rsaquo;</button>
+  {% endif %}
+  <img src="" alt="{{ piece.title }}" data-lb-img>
+  <p class="lb-count" data-lb-count></p>
+  <script type="application/json" data-lb-full>[{% for s in piece.images %}"{{ img_large(s) }}"{% if not loop.last %},{% endif %}{% endfor %}]</script>
+</dialog>
+{% endblock %}

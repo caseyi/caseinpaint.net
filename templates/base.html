@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  {% set full_title = (title ~ " | " ~ site.name) if title else (site.name ~ " | " ~ site.tagline) %}
+  {% set desc = description or site.description %}
+  <title>{{ full_title }}</title>
+  <meta name="description" content="{{ desc }}">
+  {% if staging %}<meta name="robots" content="noindex, nofollow">{% endif %}
+  <link rel="canonical" href="{{ abs_url(path) }}">
+  <meta name="theme-color" content="#0b0618">
+
+  <meta property="og:type" content="{{ og_type or 'website' }}">
+  <meta property="og:site_name" content="{{ site.name }}">
+  <meta property="og:title" content="{{ title or site.name }}">
+  <meta property="og:description" content="{{ desc }}">
+  <meta property="og:url" content="{{ abs_url(path) }}">
+  <meta property="og:image" content="{{ abs_url('img/' ~ og) }}">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <link rel="icon" href="{{ url('icons/favicon.ico') }}" sizes="any">
+  <link rel="icon" href="{{ url('icons/icon-192.png') }}" type="image/png">
+  <link rel="apple-touch-icon" href="{{ url('icons/apple-touch-icon.png') }}">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400..700;1,9..40,400&family=Orbitron:wght@600;800;900&display=swap" rel="stylesheet">
+  <script>document.documentElement.classList.add("js")</script>
+  <link rel="stylesheet" href="{{ assets.css }}">
+  <script src="{{ assets.js }}" defer></script>
+  {% block head %}{% endblock %}
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@graph":[
+    {"@type":"WebSite","@id":"{{ site.url }}/#site","url":"{{ site.url }}/","name":"{{ site.name }}"},
+    {"@type":"Person","@id":"{{ site.url }}/#casey","name":"{{ site.owner }}","url":"{{ site.url }}/about/","sameAs":["{{ site.youtube }}","{{ site.instagram }}"]}
+  ]}
+  </script>
+</head>
+<body class="page-{{ page_class or 'default' }}">
+  <a class="skip" href="#main">Skip to content</a>
+  {% if staging %}<div class="staging-banner" role="note">Staging preview. The live site is still WordPress.</div>{% endif %}
+  {% set nav = [("gallery/", "Gallery"), ("process/", "Process"), ("about/", "About")] %}
+  <header class="site-header">
+    <div class="wrap header-inner">
+      <a class="brand" href="{{ url() }}" aria-label="{{ site.name }} home">
+        <img src="{{ img_src('logo-mark', 480) }}" alt="" width="40" height="40">
+        <span>Case<b>In</b>Paint</span>
+      </a>
+      <button class="nav-toggle" aria-expanded="false" aria-controls="site-nav">
+        <span class="sr-only">Menu</span><span class="bars" aria-hidden="true"></span>
+      </button>
+      <nav id="site-nav" class="site-nav" aria-label="Main">
+        {% for href, label in nav %}
+        <a href="{{ url(href) }}"{% if path.startswith(href) or (href == 'gallery/' and (path.startswith('work/') or path in ['statues-busts/','tabletop-gaming/','props-display/'])) %} aria-current="page"{% endif %}>{{ label }}</a>
+        {% endfor %}
+        <a class="nav-cta" href="{{ url('commissions/') }}"{% if path.startswith('commissions') %} aria-current="page"{% endif %}>Commissions</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+  {% block main %}{% endblock %}
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap footer-inner">
+      <div class="footer-brand">
+        <a class="brand" href="{{ url() }}"><img src="{{ img_src('logo-mark', 480) }}" alt="" width="40" height="40"><span>Case<b>In</b>Paint</span></a>
+        <p>3D printed and hand-painted at my desk in Seattle. Mostly for the fun of it.</p>
+      </div>
+      <nav class="footer-nav" aria-label="Footer">
+        <h2>Explore</h2>
+        <a href="{{ url('gallery/') }}">Gallery</a>
+        {% for c in site.categories %}<a href="{{ url(c.path) }}">{{ c.name }}</a>{% endfor %}
+        <a href="{{ url('process/') }}">Process</a>
+        <a href="{{ url('about/') }}">About</a>
+        <a href="{{ url('commissions/') }}">Commissions</a>
+      </nav>
+      <div class="footer-nav">
+        <h2>Say hi</h2>
+        <a href="{{ site.youtube }}" rel="me noopener" target="_blank">YouTube</a>
+        <a href="{{ site.instagram }}" rel="me noopener" target="_blank">Instagram</a>
+        <a href="mailto:{{ site.email }}">{{ site.email }}</a>
+      </div>
+    </div>
+    <div class="wrap footer-legal">
+      <p>&copy; {{ year }} {{ site.owner }} / {{ site.name }}. Characters belong to their respective owners; paint jobs are mine.</p>
+    </div>
+  </footer>
+  {% block dialogs %}{% endblock %}
+</body>
+</html>

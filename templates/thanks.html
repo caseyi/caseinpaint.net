@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% set page_class = "thanks" %}
+{% set title = "Thanks!" %}
+{% block head %}<meta name="robots" content="noindex">{% endblock %}
+{% block main %}
+<section class="page-head center">
+  <div class="wrap">
+    <p class="eyebrow c-mint">Message sent</p>
+    <h1>Thanks! I'll be in touch.</h1>
+    <p class="lede">Your note is on its way to my inbox. If you have files to share, you can drop them in my Dropbox.</p>
+    <div class="actions center">
+      <a class="btn btn-primary" href="{{ site.dropbox_request }}" target="_blank" rel="noopener">Upload files</a>
+      <a class="btn btn-ghost" href="{{ url('gallery/') }}">Back to the gallery</a>
+    </div>
+  </div>
+</section>
+{% endblock %}

@@ -1,0 +1,189 @@
+[
+  {
+    "slug": "batman",
+    "title": "Batman",
+    "category": "statues",
+    "images": ["batman", "batman-desk"],
+    "summary": "The Dark Knight in classic blue and grey, crouched above a base with the Bat-Signal emblem set into it."
+  },
+  {
+    "slug": "hawkgirl",
+    "title": "Hawkgirl",
+    "category": "statues",
+    "images": ["hawkgirl"],
+    "summary": "Hawkgirl with her wings fully spread, mace in hand, rising off a stormy grey base."
+  },
+  {
+    "slug": "spider-gwen",
+    "title": "Spider-Gwen",
+    "category": "statues",
+    "images": ["spider-gwen", "spider-gwen-detail", "process-spider-gwen-wip"],
+    "summary": "Ghost-Spider mid-swing over a web-wrapped base, finished in her white, pink and teal with a neon burst underneath."
+  },
+  {
+    "slug": "kitty-pryde",
+    "title": "Kitty Pryde",
+    "category": "statues",
+    "images": ["kitty-pryde"],
+    "summary": "Kitty Pryde phasing through the ivy-covered wall of the Xavier's School sign."
+  },
+  {
+    "slug": "deadpool",
+    "title": "Deadpool",
+    "category": "statues",
+    "images": ["deadpool"],
+    "summary": "Deadpool leaping off a pile of rubble, armed to the teeth as usual."
+  },
+  {
+    "slug": "yoda",
+    "title": "Yoda",
+    "category": "statues",
+    "images": ["yoda"],
+    "summary": "Master Yoda in his well-worn robes, painted in earthy greens and browns."
+  },
+  {
+    "slug": "horseman",
+    "title": "The Horseman",
+    "category": "statues",
+    "images": ["horseman", "horseman-2", "horseman-3"],
+    "summary": "A spear-wielding rider on a pale, armored beast, climbing a rocky base with glowing green accents."
+  },
+  {
+    "slug": "giant-crow",
+    "title": "Giant Crow Mount",
+    "category": "tabletop",
+    "images": ["giant-crow", "giant-crow-2", "giant-crow-3", "giant-crow-4"],
+    "summary": "A giant crow with a saddled rider, layered blue-black and grey feathers, perched on a gnarled branch."
+  },
+  {
+    "slug": "beholder",
+    "title": "Beholder",
+    "category": "tabletop",
+    "images": ["beholder"],
+    "summary": "A bubblegum-pink beholder with one very big blue eye, hovering over a rocky base."
+  },
+  {
+    "slug": "forest-troll",
+    "title": "Forest Troll",
+    "category": "tabletop",
+    "images": ["forest-troll"],
+    "summary": "A hulking troll in the middle of a messy meal, on a blood-spattered base."
+  },
+  {
+    "slug": "gelatinous-cube",
+    "title": "Gelatinous Cube",
+    "category": "tabletop",
+    "images": ["gelatinous-cube", "gelatinous-cube-2"],
+    "summary": "A blood-red gelatinous cube, complete with swallowed bones and a treasure chest nobody is getting back."
+  },
+  {
+    "slug": "purple-worms",
+    "title": "Purple Worms",
+    "category": "tabletop",
+    "images": ["purple-worms", "purple-worms-2"],
+    "summary": "A trio of purple worms breaching the ground."
+  },
+  {
+    "slug": "slaadi",
+    "title": "Slaadi",
+    "category": "tabletop",
+    "images": ["slaadi", "slaadi-2"],
+    "summary": "A pair of slaadi in swampy greens, clinging to driftwood bases."
+  },
+  {
+    "slug": "tentacled-skull",
+    "title": "Tentacled Skull",
+    "category": "tabletop",
+    "images": ["tentacled-skull"],
+    "summary": "A demonic skull wreathed in teal tentacles, with red and gold detail."
+  },
+  {
+    "slug": "pumpkin-horror",
+    "title": "Pumpkin Horror",
+    "category": "tabletop",
+    "images": ["pumpkin-horror"],
+    "summary": "A jack-o'-lantern monster with a glowing red eye and a mouthful of teeth."
+  },
+  {
+    "slug": "witchlight",
+    "title": "Witchlight Carnival",
+    "category": "tabletop",
+    "images": ["witchlight-carnival", "witchlight-balloon", "witchlight-stage"],
+    "summary": "Carnival folk, a hot-air balloon and a festival stage from the Wild Beyond the Witchlight campaign I ran for my son and his friends."
+  },
+  {
+    "slug": "character-minis",
+    "title": "Character Minis",
+    "category": "tabletop",
+    "images": ["character-lizardfolk", "character-flame-knight", "character-beast-warrior", "character-armored"],
+    "summary": "A handful of favorite heroes and villains from our tables."
+  },
+  {
+    "slug": "winged-warrior",
+    "title": "Winged Warrior",
+    "category": "tabletop",
+    "images": ["winged-warrior", "winged-warrior-2"],
+    "heroforge": "winged-warrior-heroforge",
+    "summary": "Designed in HeroForge, then printed and painted to match, bat wings and all."
+  },
+  {
+    "slug": "ninja-rogue",
+    "title": "Ninja Rogue",
+    "category": "tabletop",
+    "images": ["ninja-rogue"],
+    "heroforge": "ninja-rogue-heroforge",
+    "summary": "A HeroForge rogue brought to the table in red and black."
+  },
+  {
+    "slug": "flame-sword-fighter",
+    "title": "Flame Sword Fighter",
+    "category": "tabletop",
+    "images": ["flame-sword-fighter"],
+    "heroforge": "flame-sword-fighter-heroforge",
+    "summary": "A HeroForge fighter with a blade that is very much on fire."
+  },
+  {
+    "slug": "kobold-chef",
+    "title": "Kobold Chef",
+    "category": "tabletop",
+    "images": ["kobold-chef"],
+    "heroforge": "kobold-chef-heroforge",
+    "summary": "A HeroForge kobold chef, treasure chest and all."
+  },
+  {
+    "slug": "faun-druid",
+    "title": "Faun Druid",
+    "category": "tabletop",
+    "images": ["faun-druid"],
+    "heroforge": "faun-druid-heroforge",
+    "summary": "A HeroForge faun druid, shown here mid-paint on the handle."
+  },
+  {
+    "slug": "dragon-trophy",
+    "title": "Dragon Trophy Mount",
+    "category": "props",
+    "images": ["dragon-trophy", "dragon-trophy-2"],
+    "summary": "A snarling white dragon head on a bronze wall plaque, hung trophy-style."
+  },
+  {
+    "slug": "dragon-potion",
+    "title": "Dragon Potion Bottle",
+    "category": "props",
+    "images": ["dragon-potion"],
+    "summary": "A potion bottle wrapped in dragon scales and rope, capped with a castle-tower stopper."
+  },
+  {
+    "slug": "cosplay-blade",
+    "title": "Cosplay Blade",
+    "category": "props",
+    "images": ["cosplay-blade"],
+    "summary": "A curved, battle-worn blade prop."
+  },
+  {
+    "slug": "board-game-organizers",
+    "title": "Board Game Organizers",
+    "category": "props",
+    "images": ["board-games", "board-games-2", "board-games-3", "board-games-4", "board-games-5"],
+    "summary": "Custom printed organizers for Spots and Wingspan. Not everything has to be a monster."
+  }
+]

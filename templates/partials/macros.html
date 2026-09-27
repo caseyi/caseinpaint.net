@@ -1,0 +1,35 @@
+{% macro card(p, sizes="(min-width: 1100px) 360px, (min-width: 640px) 45vw, 92vw", cls="") %}
+<a class="card {{ cls }} c-{{ p.cat.color }}" href="{{ url(p.path) }}">
+  <span class="card-media">{{ img(p.cover, p.title, sizes=sizes) }}</span>
+  <span class="card-body">
+    <span class="card-cat">{{ p.cat.short }}</span>
+    <span class="card-title">{{ p.title }}</span>
+    {% if p.images|length > 1 %}<span class="card-count" aria-label="{{ p.images|length }} photos">{{ p.images|length }}</span>{% endif %}
+  </span>
+</a>
+{% endmacro %}
+
+{% macro heroforge_pair(p, sizes="(min-width: 900px) 220px, 40vw") %}
+<a class="pair" href="{{ url(p.path) }}">
+  <figure class="pair-side pair-before">
+    {{ img(p.heroforge, p.title ~ " designed in HeroForge", sizes=sizes) }}
+    <figcaption>HeroForge</figcaption>
+  </figure>
+  <span class="pair-arrow" aria-hidden="true">&rarr;</span>
+  <figure class="pair-side pair-after">
+    {{ img(p.cover, p.title ~ " printed and painted", sizes=sizes) }}
+    <figcaption>Painted</figcaption>
+  </figure>
+  <span class="pair-title">{{ p.title }}</span>
+</a>
+{% endmacro %}
+
+{% macro page_head(eyebrow, heading, lede="", color="pink") %}
+<section class="page-head">
+  <div class="wrap">
+    <p class="eyebrow c-{{ color }}">{{ eyebrow }}</p>
+    <h1>{{ heading }}</h1>
+    {% if lede %}<p class="lede">{{ lede }}</p>{% endif %}
+  </div>
+</section>
+{% endmacro %}

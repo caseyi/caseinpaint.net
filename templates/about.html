@@ -1,0 +1,66 @@
+{% extends "base.html" %}
+{% set page_class = "about" %}
+{% set title = "About" %}
+{% set description = "How Casey Iiams-Hauser went from staring at pewter minis in game shop windows to printing and painting his own miniatures and statues." %}
+{% block main %}
+<section class="page-head about-head">
+  <div class="wrap about-head-inner">
+    {{ img("casey", "Casey Iiams-Hauser", sizes="140px", cls="avatar avatar-lg", eager=True) }}
+    <div>
+      <p class="eyebrow c-cyan">About me</p>
+      <h1>From pewter window shopping to printing my own adventures</h1>
+    </div>
+  </div>
+</section>
+
+<section class="section section-tight">
+  <div class="wrap story">
+    <div class="story-block">
+      <p class="eyebrow c-mint">The early years</p>
+      <h2>Late-'80s D&amp;D kid</h2>
+      <p>I started playing Dungeons &amp; Dragons in elementary school in the late '80s. From there I dove into all kinds of RPGs: Rifts, Teenage Mutant Ninja Turtles &amp; Other Strangeness and plenty more. I loved the pewter minis in the game shop windows, but I never had any of my own.</p>
+    </div>
+
+    <div class="story-block">
+      <p class="eyebrow c-pink">Rediscovering the magic</p>
+      <h2>Back at the table</h2>
+      <p>Years later, on a two-family vacation with great friends, we played a session of D&amp;D with the then-seven-year-olds. It all came rushing back. When I turned 40, I decided I wanted to see my friends more often, so we started a weekly game that's been going strong across three campaigns and twice as many years. I also ran a campaign for my son and his friends for about five years.</p>
+    </div>
+
+    <div class="story-block story-split">
+      <div>
+        <p class="eyebrow c-cyan">The first paint job</p>
+        <h2>Everyone starts somewhere</h2>
+        <p>For my first campaign I had someone print a mini through an online service. That was also my first paint job ever. Then I discovered HeroForge and used it to make my player characters for the second campaign.</p>
+        <p>About three years ago, my partner got me my first printer, and I printed my first minis. That was so much fun that I started printing everything I needed for the game I was running.</p>
+      </div>
+      <div class="story-figs">
+        <figure>{{ img("first-print", "My first 3D print", sizes="(min-width: 900px) 280px, 45vw") }}<figcaption>My first 3D print</figcaption></figure>
+        <figure>{{ img("first-minis", "My first painted minis", sizes="(min-width: 900px) 280px, 45vw") }}<figcaption>My first painted minis</figcaption></figure>
+      </div>
+    </div>
+
+    <div class="story-block">
+      <p class="eyebrow c-mint">Homework &amp; hobbies</p>
+      <h2>Painting through homework</h2>
+      <p>I needed something to do while keeping my son company during homework, something that wouldn't distract him. So I picked up some spray paint and a few paints and got started. Middle school came with a lot of homework, so I got a lot of practice. The kids spent a good while in the Wild Beyond the Witchlight, which is why you'll see so much carnival stuff and so many rabbit folk in my work.</p>
+    </div>
+
+    <div class="story-block">
+      <p class="eyebrow c-pink">Comic book dreams</p>
+      <h2>The statues I never bought</h2>
+      <p>I've loved comics since I was a kid and always admired the statues in shop windows. Just like the pewter minis, I never bought any. Now that I can print them, I get to make the statues I always dreamed of owning.</p>
+      <a class="link-arrow" href="{{ url('statues-busts/') }}">See the statues</a>
+    </div>
+
+    <div class="story-block story-end">
+      <h2>Maybe you'll be inspired too</h2>
+      <p>I'd never painted a mini until a few years ago, and now it's my favorite way to relax. I hope you like what you see here, and maybe feel like picking up a brush yourself.</p>
+      <div class="actions">
+        <a class="btn btn-primary" href="{{ url('gallery/') }}">Browse the gallery</a>
+        <a class="btn btn-ghost" href="{{ site.youtube }}" target="_blank" rel="noopener">Watch on YouTube</a>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock %}

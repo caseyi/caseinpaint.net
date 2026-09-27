@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% from "partials/macros.html" import card, page_head %}
+{% set page_class = "gallery" %}
+{% if current %}
+  {% set title = current.name %}
+  {% set description = current.intro %}
+{% else %}
+  {% set title = "Gallery" %}
+  {% set description = "Every piece in the Case In Paint gallery: tabletop minis, comic book statues, props and display pieces, 3D printed and hand painted." %}
+{% endif %}
+{% block main %}
+{{ page_head("Gallery" if current else "The whole shelf", current.name if current else "Gallery", current.intro if current else "Everything I've printed and painted that made it in front of a camera. Tap any piece for more photos.", current.color if current else "pink") }}
+<section class="section section-tight">
+  <div class="wrap">
+    <nav class="chips" aria-label="Filter by category">
+      <a class="chip" href="{{ url('gallery/') }}"{% if not current %} aria-current="page"{% endif %}>All <span>{{ pieces|length }}</span></a>
+      {% for c in site.categories %}
+      <a class="chip c-{{ c.color }}" href="{{ url(c.path) }}"{% if current and current.id == c.id %} aria-current="page"{% endif %}>{{ c.name }} <span>{{ c.pieces|length }}</span></a>
+      {% endfor %}
+    </nav>
+    <div class="masonry">
+      {% for p in items %}{{ card(p) }}{% endfor %}
+    </div>
+  </div>
+</section>
+{% endblock %}

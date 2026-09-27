@@ -1,0 +1,7 @@
+dist/
+dist-staging/
+.cache/
+*.zip
+__pycache__/
+.DS_Store
+_raw/

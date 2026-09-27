@@ -1,0 +1,99 @@
+{
+  "name": "Case In Paint",
+  "url": "https://caseinpaint.net",
+  "owner": "Casey Iiams-Hauser",
+  "tagline": "3D printed and hand-painted minis, statues and props",
+  "description": "Case In Paint: 3D printed and hand-painted tabletop minis, comic book statues and props by Casey Iiams-Hauser in Seattle, WA.",
+  "email": "casey@caseinpaint.net",
+  "youtube": "https://www.youtube.com/@Caseinpaint",
+  "instagram": "https://www.instagram.com/caseinpaint",
+  "heroforge": "https://www.heroforge.com/",
+  "dropbox_request": "https://www.dropbox.com/request/72ARFHzK6BHDNGTrOq7K",
+  "categories": [
+    {
+      "id": "statues",
+      "slug": "statues-busts",
+      "name": "Statues & Busts",
+      "short": "Statues",
+      "blurb": "Comic book heroes and collector display pieces.",
+      "intro": "The statues I always admired in comic shop windows and never bought. Now I print and paint them myself.",
+      "cover": "hawkgirl",
+      "color": "cyan"
+    },
+    {
+      "id": "tabletop",
+      "slug": "tabletop-gaming",
+      "name": "Tabletop Minis",
+      "short": "Tabletop",
+      "blurb": "D&D characters, monsters and mounts.",
+      "intro": "Player characters, monsters and the occasional carnival from the games at our table. Lots of them started life in HeroForge.",
+      "cover": "giant-crow",
+      "color": "mint"
+    },
+    {
+      "id": "props",
+      "slug": "props-display",
+      "name": "Props & Display",
+      "short": "Props",
+      "blurb": "Trophy mounts, props and useful prints.",
+      "intro": "Wall mounts, prop pieces and the practical prints that keep game night organized.",
+      "cover": "dragon-trophy",
+      "color": "pink"
+    }
+  ],
+  "featured": [
+    "batman",
+    "hawkgirl",
+    "giant-crow",
+    "spider-gwen",
+    "kitty-pryde",
+    "beholder",
+    "deadpool",
+    "horseman",
+    "dragon-trophy"
+  ],
+  "heroforge_pairs": [
+    "winged-warrior",
+    "ninja-rogue",
+    "flame-sword-fighter",
+    "kobold-chef",
+    "faun-druid"
+  ],
+  "studios": [
+    {
+      "name": "B3DSERK Studios",
+      "what": "DC sculptures and busts",
+      "url": "https://b3dserk.gumroad.com/"
+    },
+    {
+      "name": "Wicked",
+      "what": "Marvel heroes and villains",
+      "url": "https://3dwicked.gumroad.com/"
+    },
+    {
+      "name": "Star Wars 3D Models",
+      "what": "Characters, vehicles and props",
+      "url": "https://starwars3dmodels.gumroad.com/"
+    },
+    {
+      "name": "ZEZ Collectibles",
+      "what": "Deadpool, Spawn, Wolverine and more",
+      "url": "https://zezcollectibles.gumroad.com/"
+    },
+    {
+      "name": "Rescale Miniatures",
+      "what": "Dragons and fantasy creatures",
+      "url": "https://www.patreon.com/c/rescaleminiatures/home"
+    },
+    {
+      "name": "Archvillain Games",
+      "what": "Fantasy and sci-fi tabletop",
+      "url": "https://archvillaingames.com/"
+    },
+    {
+      "name": "Loot Studios",
+      "what": "RPG miniatures",
+      "url": "https://lootstudios.com/"
+    }
+  ]
+}
