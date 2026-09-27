@@ -30,7 +30,7 @@ ROOT = Path(__file__).resolve().parent
 SRC_IMG = ROOT / "src" / "img"
 SRC_VIDEO = ROOT / "src" / "video"
 CACHE = ROOT / ".cache" / "img"
-WIDTHS = (480, 960, 1600)
+WIDTHS = (480, 960, 1400)
 OG_SIZE = (1200, 630)
 BG = (11, 6, 24)  # page background, used when flattening transparent images
 
@@ -68,7 +68,7 @@ class Images:
                 if not cached.exists():
                     copy = im.convert("RGBA" if alpha else "RGB")
                     copy.thumbnail((sw, 10_000), Image.LANCZOS)
-                    copy.save(cached, "WEBP", quality=80, method=6)
+                    copy.save(cached, "WEBP", quality=78, method=6)
                 shutil.copy2(cached, self.out / name)
                 files[sw] = name
         self.meta[stem] = {"w": w, "h": h, "files": files, "alpha": alpha, "digest": digest}
@@ -93,7 +93,7 @@ class Images:
         return name
 
     # -- template helpers
-    def src(self, stem: str, width: int = 1600) -> str:
+    def src(self, stem: str, width: int = 1400) -> str:
         files = self.meta[stem]["files"]
         best = min(files, key=lambda w: (w < width, abs(w - width)))
         return f"{self.base}img/{files[best]}"

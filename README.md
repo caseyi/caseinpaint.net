@@ -47,7 +47,7 @@ cd dist && python3 -m http.server 8000     # open http://localhost:8000
 | `templates/htaccess.txt` | Apache rules (HTTPS, old-URL redirects, caching) rendered into `.htaccess` |
 | `templates/contact.php.txt` | Commission form mail handler rendered into `contact.php` |
 | `static/` | CSS, JS and icons, copied as-is |
-| `src/img/` | Web-sized photo masters (max 1800 px). The build makes 480/960/1600 px versions |
+| `src/img/` | Web-sized photo masters (max 1800 px). The build makes 480/960/1400 px versions |
 | `src/video/` | Resin printing time-lapse |
 | `build.py` | The build script |
 
